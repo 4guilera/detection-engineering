@@ -14,8 +14,7 @@ logsource:
 detection:
     selection:
         EventID: 4625
-    condition: selection | count() by TargetUserName > 5
-    timeframe: 5m
+    condition: selection
 falsepositives:
     - Misconfigured service accounts with expired passwords
     - Users repeatedly entering wrong credentials
