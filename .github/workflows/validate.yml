@@ -19,7 +19,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install sigma-cli
-        run: pip install sigma-cli pySigma-backend-splunk pySigma-pipeline-splunk
+        run: pip install sigma-cli pySigma-backend-splunk
 
       - name: Validate rule syntax
         run: sigma check rules/
