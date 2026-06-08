@@ -39,7 +39,7 @@ Every push to `main` (or PR against it) triggers:
 1. **Syntax validation** — `sigma check` ensures rules conform to the Sigma schema
 2. **Splunk conversion** — `sigma convert -t splunk` compiles rules to SPL, catching field mapping issues
 
-[![Validate Sigma Rules](https://github.com/USERNAME/detection-engineering/actions/workflows/validate.yml/badge.svg)](https://github.com/USERNAME/detection-engineering/actions/workflows/validate.yml)
+[![Validate Sigma Rules](https://github.com/4guilera/detection-engineering/actions/workflows/validate.yml/badge.svg)](https://github.com/4guilera/detection-engineering/actions/workflows/validate.yml)
 
 ## Writing a new rule
 
@@ -47,5 +47,5 @@ Rules follow the [Sigma specification](https://sigmahq.io/docs/basics/rules.html
 
 ## Related
 
-- [range-as-code](https://github.com/USERNAME/range-as-code) — the lab environment these detections run against
-- [homelab](https://github.com/USERNAME/homelab) — architecture overview
+- [range-as-code](https://github.com/4guilera/range-as-code) — the lab environment these detections run against
+- [homelab](https://github.com/4guilera/homelab) — architecture overview
