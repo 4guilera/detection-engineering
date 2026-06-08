@@ -3,10 +3,8 @@ name: Validate Sigma Rules
 on:
   push:
     branches: [main]
-    paths: ['rules/**']
   pull_request:
     branches: [main]
-    paths: ['rules/**']
 
 jobs:
   validate:
