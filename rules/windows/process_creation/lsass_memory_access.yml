@@ -6,7 +6,7 @@ description: Detects processes accessing LSASS memory, which is the primary tech
 author: Paul Aguilera
 date: 2026/06/04
 tags:
-    - attack.credential_access
+    - attack.credential-access
     - attack.t1003.001
 logsource:
     category: process_access
