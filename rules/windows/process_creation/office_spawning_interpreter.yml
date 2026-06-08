@@ -1,0 +1,36 @@
+title: Suspicious Process Spawned by Microsoft Office
+id: 4a8c2d15-9e73-4b6f-a821-7c3df5e8a6b9
+status: test
+level: high
+description: Detects command interpreters or scripting engines spawned by Office applications. This pattern is typical of macro-based malware delivery.
+author: Paul Aguilera
+date: 2026/06/04
+tags:
+    - attack.initial_access
+    - attack.t1566.001
+    - attack.execution
+    - attack.t1204.002
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_parent:
+        ParentImage|endswith:
+            - '\winword.exe'
+            - '\excel.exe'
+            - '\powerpnt.exe'
+            - '\outlook.exe'
+    selection_child:
+        Image|endswith:
+            - '\cmd.exe'
+            - '\powershell.exe'
+            - '\pwsh.exe'
+            - '\wscript.exe'
+            - '\cscript.exe'
+            - '\mshta.exe'
+            - '\certutil.exe'
+            - '\bitsadmin.exe'
+    condition: selection_parent and selection_child
+falsepositives:
+    - Legitimate Office add-ins that invoke scripts
+    - Some PDF generation workflows

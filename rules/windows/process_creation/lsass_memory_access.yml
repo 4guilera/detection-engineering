@@ -1,0 +1,32 @@
+title: LSASS Memory Access - Potential Credential Dumping
+id: 8d2f1a67-5c4e-4b93-a7d6-3e9fc2b8d1a4
+status: test
+level: critical
+description: Detects processes accessing LSASS memory, which is the primary technique for credential dumping tools like Mimikatz.
+author: Paul Aguilera
+date: 2026/06/04
+tags:
+    - attack.credential_access
+    - attack.t1003.001
+logsource:
+    category: process_access
+    product: windows
+detection:
+    selection:
+        TargetImage|endswith: '\lsass.exe'
+        GrantedAccess|contains:
+            - '0x1010'
+            - '0x1038'
+            - '0x1F0FFF'
+            - '0x1F1FFF'
+    filter_known:
+        SourceImage|endswith:
+            - '\MsMpEng.exe'
+            - '\csrss.exe'
+            - '\lsm.exe'
+            - '\wmiprvse.exe'
+            - '\svchost.exe'
+    condition: selection and not filter_known
+falsepositives:
+    - Endpoint protection products performing memory scanning
+    - Windows Credential Guard operations

@@ -1,0 +1,21 @@
+title: New Service Installed
+id: b7d24c91-3f8a-4e67-9c15-2d8af3e6b4a2
+status: test
+level: medium
+description: Detects new Windows service installations via the Service Control Manager. Attackers commonly install services for persistence or privilege escalation.
+author: Paul Aguilera
+date: 2026/06/04
+tags:
+    - attack.persistence
+    - attack.t1543.003
+logsource:
+    product: windows
+    service: system
+detection:
+    selection:
+        EventID: 7045
+    condition: selection
+falsepositives:
+    - Legitimate software installations
+    - Windows updates
+    - Group Policy deployed services

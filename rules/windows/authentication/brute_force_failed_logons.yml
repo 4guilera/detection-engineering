@@ -1,0 +1,21 @@
+title: Brute Force - Multiple Failed Logon Attempts
+id: a93cfa06-8c6e-46af-b4ea-f6c8b8b3c3d7
+status: test
+level: high
+description: Detects more than 5 failed logon attempts within 5 minutes, indicating a possible brute force attack.
+author: Paul Aguilera
+date: 2026/06/04
+tags:
+    - attack.credential_access
+    - attack.t1110.001
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4625
+    condition: selection | count() by TargetUserName > 5
+    timeframe: 5m
+falsepositives:
+    - Misconfigured service accounts with expired passwords
+    - Users repeatedly entering wrong credentials

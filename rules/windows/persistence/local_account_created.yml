@@ -1,0 +1,20 @@
+title: Local User Account Created
+id: e5c89d34-7a12-4f9b-bc83-1d6fe2a7c9d5
+status: test
+level: medium
+description: Detects the creation of new local user accounts. Unexpected account creation can indicate an attacker establishing persistence.
+author: Paul Aguilera
+date: 2026/06/04
+tags:
+    - attack.persistence
+    - attack.t1136.001
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4720
+    condition: selection
+falsepositives:
+    - Legitimate account provisioning by IT
+    - Automated onboarding workflows
